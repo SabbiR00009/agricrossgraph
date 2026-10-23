@@ -1,0 +1,11 @@
+# Upper bound / oracle: trained and tested on the SAME crop (train/val/test split of its originals).
+# Here `run.folds` means "which crop to train and test on".
+_base_: [../base.yaml, ../data/agrivision4.yaml]
+
+exp_name: baseline_cnn_within_crop
+split:
+  protocol: within_crop
+  label_level: class
+model:
+  name: cnn
+  backbone: resnet50

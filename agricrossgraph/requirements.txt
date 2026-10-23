@@ -1,0 +1,8 @@
+# Kaggle already has torch, torchvision, numpy, pandas, scikit-learn, pillow.
+# Only install what's missing (do NOT pin torch, or Kaggle will reinstall it).
+omegaconf>=2.3
+timm>=0.9
+# Phase 3 (graph models), install when you get there:
+# torch_geometric
+# scikit-image        # SLIC superpixels
+# open_clip_torch     # CLIP / BioCLIP baselines and text embeddings

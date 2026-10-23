@@ -1,0 +1,53 @@
+# Shared defaults. Every experiment file inherits from this via `_base_`.
+# Anything here can be overridden in an experiment file or on the command line:
+#   python scripts/train.py --config configs/experiments/baseline_cnn_loco.yaml train.epochs=5 model.backbone=resnet18
+
+project: agricrossgraph
+exp_name: unnamed            # set in each experiment file; becomes the output folder name
+
+run:
+  folds: [tomato, papaya, zucchini, bottle_gourd]   # LOCO: crop held out for testing
+  seeds: [0, 1, 2]                                   # training seeds (report mean ± std)
+
+data:
+  manifest: ${paths.work_root}/manifests/${dataset.name}.csv
+  image_size: 224
+  num_workers: 4
+  use_provided_augmented: false   # true = add the dataset's own augmented copies of TRAIN crops to training
+  max_per_class: null             # cap images per class (for quick tests); null = no cap
+
+split:
+  protocol: loco          # loco = leave-one-crop-out | within_crop = train/val/test inside one crop
+  label_level: concept    # concept = shared disease name across crops | class = crop-specific class
+  val_fraction: 0.15
+  test_fraction: 0.20     # within_crop only
+  seed: 42                # split seed is fixed and separate from training seeds
+  dir: splits             # inside the repo, so you can commit the frozen split files
+
+model:
+  name: cnn               # registry key, see src/agricrossgraph/models/__init__.py
+  backbone: resnet50      # any timm model name
+  pretrained: true
+  drop_rate: 0.2
+
+train:
+  epochs: 30
+  batch_size: 64
+  lr: 3.0e-4
+  weight_decay: 0.05
+  warmup_epochs: 2
+  label_smoothing: 0.1
+  amp: true
+  early_stop_patience: 7
+  class_balanced_sampler: true
+
+augment:
+  scale_min: 0.6
+  rotation: 30
+  hflip: 0.5
+  vflip: 0.2
+  color_jitter: 0.2
+
+log:
+  wandb: false
+  print_every: 50

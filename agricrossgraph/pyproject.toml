@@ -1,0 +1,8 @@
+[project]
+name = "agricrossgraph"
+version = "0.1.0"
+description = "Cross-crop contrastive graph pretraining for zero-shot leaf disease transfer"
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["src"]

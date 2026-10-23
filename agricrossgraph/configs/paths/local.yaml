@@ -1,0 +1,6 @@
+# Used when not on Kaggle (your laptop, Colab, etc.). Select explicitly with --paths local.
+paths:
+  agrivision4_root: ./data/agrivision4
+  bd_freshness_root: ./data/bd_freshness
+  work_root: ./work
+  output_root: ./outputs

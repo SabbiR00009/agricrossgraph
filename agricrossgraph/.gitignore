@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+data/
+work/
+outputs/
+wandb/
+*.pt
+*.pth
+*.zip
+.ipynb_checkpoints/

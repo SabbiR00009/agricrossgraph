@@ -1,0 +1,7 @@
+# Used automatically when /kaggle/input exists.
+# EDIT the dataset roots to match your Kaggle dataset slugs (run scripts/inspect_dataset.py to see them).
+paths:
+  agrivision4_root: /kaggle/input/agri-vision4
+  bd_freshness_root: /kaggle/input/bd-leaf-freshness-disease
+  work_root: /kaggle/working
+  output_root: /kaggle/working/outputs

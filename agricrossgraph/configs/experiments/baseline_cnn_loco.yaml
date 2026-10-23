@@ -1,0 +1,12 @@
+# Baseline 1 (lower bound): supervised CNN trained on 3 crops with shared disease concepts,
+# tested on the held-out crop. Unseen concepts in the test crop are always wrong for this model,
+# which is exactly the gap AgriCrossGraph has to close.
+_base_: [../base.yaml, ../data/agrivision4.yaml]
+
+exp_name: baseline_cnn_loco
+split:
+  protocol: loco
+  label_level: concept
+model:
+  name: cnn
+  backbone: resnet50

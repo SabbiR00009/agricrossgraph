@@ -1,0 +1,16 @@
+# Tiny run to check the whole pipeline works (a few minutes). Run this first on Kaggle.
+_base_: [baseline_cnn_loco.yaml]
+
+exp_name: smoke_test
+run:
+  folds: [tomato]
+  seeds: [0]
+data:
+  max_per_class: 20
+  num_workers: 2
+model:
+  backbone: resnet18
+train:
+  epochs: 2
+  batch_size: 32
+  warmup_epochs: 0
